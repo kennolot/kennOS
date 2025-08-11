@@ -7,26 +7,23 @@
 use core::panic::PanicInfo;
 use kennOS::println;
 
-#[unsafe(no_mangle)]
+#[unsafe(no_mangle)] // don't mangle the name of this function
 pub extern "C" fn _start() -> ! {
-    println!("Welcome to kennOS!");
-
-    #[cfg(test)]
     test_main();
-    loop {}
-}
-
-#[cfg(not(test))]
-#[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
-    println!("{}", info);
 
     loop {}
 }
 
-// panic handler test
-#[cfg(test)]
+fn test_runner(tests: &[&dyn Fn()]) {
+    unimplemented!();
+}
+
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    kennOS::test_panic_handler(info)    
+    kennOS::test_panic_handler(info)
+}
+
+#[test_case]
+fn test_println() {
+    println!("test_println output");
 }
