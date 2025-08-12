@@ -11,6 +11,10 @@ use kennOS::println;
 pub extern "C" fn _start() -> ! {
     println!("Welcome to kennOS!");
 
+    // breakpoint exception
+    kennOS::init();
+    x86_64::instructions::interrupts::int3();
+
     #[cfg(test)]
     test_main();
     loop {}

@@ -28,7 +28,7 @@ checksum = "1ea119c3ed05625c179e09d17d0914570a3753ca09c890a73d98f6b72aea00d2"
 
 [[package]]
 name = "kennOS"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "bootloader",
  "lazy_static",
